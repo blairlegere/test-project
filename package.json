@@ -1,0 +1,15 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "A tiny JavaScript Hello World project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "hello-world",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT"
+}
