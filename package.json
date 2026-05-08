@@ -4,7 +4,7 @@
   "description": "A tiny JavaScript Hello World project.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "keywords": [
     "hello-world",
