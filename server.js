@@ -15,11 +15,19 @@ const mimeByExt = {
   ".jpeg": "image/jpeg",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
+  ".ttf": "font/ttf",
+  ".txt": "text/plain; charset=utf-8",
   ".webp": "image/webp",
 };
 
 const server = http.createServer((request, response) => {
-  const filePath = request.url === "/" ? "index.html" : request.url.slice(1);
+  const urlPath = request.url.split("?")[0].split("#")[0];
+  let filePath = urlPath === "/" ? "index.html" : urlPath.slice(1);
+
+  if (filePath === "favicon.ico") {
+    filePath = "favicon-32.png";
+  }
+
   const resolvedPath = path.join(__dirname, filePath);
 
   fs.readFile(resolvedPath, (error, content) => {
