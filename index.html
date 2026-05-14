@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blair Legere | Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
       :root {
         color-scheme: light;
@@ -13,7 +16,7 @@
         --brand: #8abfb0;
         --paper: #ffffff;
         --chip: #f7f8f8;
-        font-family: "Times New Roman", Times, serif;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
         background: var(--paper);
         color: var(--ink);
       }
@@ -55,35 +58,15 @@
       }
 
       .brand {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 14px;
         color: var(--brand);
-        font-size: 13px;
-        font-weight: 700;
       }
 
-      .mark {
-        width: 34px;
-        height: 25px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
-      }
-
-      .mark span {
-        background: var(--brand);
-        border-radius: 2px;
-      }
-
-      .mark span:nth-child(1),
-      .mark span:nth-child(5) {
-        grid-row: span 2;
-      }
-
-      .mark span:nth-child(2),
-      .mark span:nth-child(7) {
-        opacity: .65;
+      .brand-logo {
+        display: block;
+        height: 28px;
+        width: auto;
       }
 
       .intro {
@@ -93,15 +76,15 @@
 
       .intro-eyebrow {
         margin: 0 0 20px;
-        font-size: 16px;
-        line-height: 1.15;
+        font-size: 32px;
+        line-height: 1.2;
         font-weight: 800;
       }
 
-      .intro h1 {
+      .intro-blurb {
         margin: 0;
-        font-size: clamp(23px, 2.4vw, 30px);
-        line-height: 1.23;
+        font-size: 28px;
+        line-height: 1.35;
         font-weight: 400;
         letter-spacing: 0;
       }
@@ -121,7 +104,16 @@
         height: 22px;
         display: inline-grid;
         place-items: center;
-        color: #8a8f94;
+        color: #8bbaab;
+        transition: color 0.2s ease;
+      }
+
+      .icon-link:hover {
+        color: #6e9e91;
+      }
+
+      .icon-link:active {
+        color: #4d7c6e;
       }
 
       .profile {
@@ -130,17 +122,20 @@
 
       .profile h2 {
         margin: 0 0 2px;
-        font-size: 13px;
+        font-size: 24px;
         line-height: 1.2;
       }
 
       .profile p {
         margin: 0;
+        font-size: 18px;
         line-height: 1.35;
       }
 
       .content {
         padding: 28px 16px 80px 20px;
+        font-size: 14px;
+        line-height: 1.5;
       }
 
       .nav {
@@ -148,16 +143,39 @@
         justify-content: flex-end;
         gap: 32px;
         margin-bottom: 42px;
-        font-size: 10px;
       }
 
       .nav a {
-        color: #33373b;
+        position: relative;
+        color: #8bbaab;
+        text-decoration: none;
         padding-bottom: 4px;
+        font-size: 14px;
       }
 
-      .nav a[aria-current="page"] {
-        border-bottom: 1px solid currentColor;
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.28s ease;
+      }
+
+      .nav a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .nav a[aria-current="page"]::after {
+        transform: scaleX(1);
+      }
+
+      .nav a:active {
+        color: #6e9e91;
       }
 
       .section {
@@ -170,29 +188,105 @@
 
       .bio p {
         margin: 0 0 24px;
+        font-size: 14px;
       }
 
       .section-title {
         margin: 38px 0 24px;
-        font-size: 17px;
-        line-height: 1;
+        font-size: 24px;
+        line-height: 1.25;
         letter-spacing: 0;
       }
 
       .skills {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+      }
+
+      .skills-row {
+        overflow: hidden;
+        margin-inline: -4px;
+        padding-block: 1px;
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 28px,
+          #000 calc(100% - 28px),
+          transparent
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 28px,
+          #000 calc(100% - 28px),
+          transparent
+        );
+      }
+
+      .skills-track {
+        --skills-marquee-duration: 52s;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
         gap: 7px;
+        width: max-content;
+        animation: skills-marquee var(--skills-marquee-duration) linear infinite;
+      }
+
+      .skills-row:nth-child(1) .skills-track {
+        --skills-marquee-duration: 48s;
+      }
+
+      .skills-row:nth-child(2) .skills-track {
+        --skills-marquee-duration: 40s;
+        animation-direction: reverse;
+      }
+
+      .skills-row:nth-child(3) .skills-track {
+        --skills-marquee-duration: 56s;
+      }
+
+      .skills-set {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 7px;
+        flex-shrink: 0;
+      }
+
+      @keyframes skills-marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .skills-track {
+          animation: none;
+          transform: none;
+        }
+
+        .nav a::after {
+          transition: none;
+        }
       }
 
       .chip {
         border: 1px solid #aeb4b9;
         border-radius: 3px;
         background: var(--chip);
-        padding: 2px 8px 3px;
+        padding: 3px 9px 4px;
         color: #33383d;
-        font-size: 9px;
-        line-height: 1.2;
+        font-size: 14px;
+        line-height: 1.25;
         white-space: nowrap;
       }
 
@@ -207,7 +301,7 @@
 
       .job h3 {
         margin: 0;
-        font-size: 11px;
+        font-size: 16px;
         line-height: 1.35;
       }
 
@@ -215,19 +309,19 @@
       .location {
         margin: 8px 0 0;
         color: var(--quiet);
-        font-size: 9px;
+        font-size: 14px;
       }
 
       .job p {
         margin: 18px 0 0;
         max-width: 720px;
-        font-size: 9px;
+        font-size: 14px;
         line-height: 1.55;
       }
 
       .company {
         margin-top: 14px;
-        font-size: 9px;
+        font-size: 14px;
         font-weight: 700;
       }
 
@@ -247,10 +341,6 @@
           margin-top: 36px;
         }
 
-        .intro h1 {
-          font-size: 34px;
-        }
-
         .profile {
           margin-top: 28px;
         }
@@ -267,25 +357,8 @@
       }
 
       @media (max-width: 420px) {
-        .brand {
-          font-size: 16px;
-        }
-
-        .mark {
-          width: 38px;
-          height: 28px;
-        }
-
-        .intro-eyebrow {
-          font-size: 22px;
-        }
-
-        .intro h1 {
-          font-size: 30px;
-        }
-
-        .section-title {
-          font-size: 22px;
+        .brand-logo {
+          height: 32px;
         }
       }
     </style>
@@ -295,26 +368,23 @@
       <aside class="sidebar" aria-label="Portfolio introduction">
         <div>
           <a class="brand" href="#top" aria-label="Blair Legere home">
-            <span class="mark" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-            <span>Blair Legere</span>
+            <img
+              class="brand-logo"
+              src="logo.png"
+              width="225"
+              height="132"
+              alt="Blair Legere logo: stylized Bl. mark in sage green"
+              decoding="async"
+            >
           </a>
 
           <section class="intro" id="top">
-            <p class="intro-eyebrow">Hi, I'm Blair.</p>
-            <h1>
-              I'm a <strong>product designer</strong> at <strong>Blackstone</strong>.
-              I'm passionate about <strong>design systems</strong>,
+            <p class="intro-eyebrow">Blair Legere</p>
+            <h2 class="intro-blurb">
+              <strong>Product designer</strong> at <strong>Blackstone</strong> passionate about <strong>design systems</strong>,
               <strong>product lifecycles</strong>, and using
               <strong>data visualization</strong> to create beautiful and useful tools.
-            </h1>
+            </h2>
 
             <div class="socials" aria-label="Contact links">
               <a class="icon-link" href="mailto:hello@blairlegere.com" aria-label="Email Blair">
@@ -341,8 +411,8 @@
 
       <main class="content">
         <nav class="nav" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#work" aria-current="page">Work</a>
+          <a href="#about" aria-current="page">About</a>
+          <a href="#work">Work</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -354,46 +424,89 @@
             stakeholders and cross-functional teams.
           </p>
           <p>
-            Before transitioning into product design in 2022, I managed
-            front-end development, where I developed a strong interest in UI/UX
-            and the intersection of design and engineering.
-          </p>
-          <p>
             I graduated with honors from Cornell University's Bowers College of
-            Computing and Information Science in 2020.
+            Computing and Information Science in 2020 with concentrations in UX and behavioral systems.
           </p>
           <p>
-            Outside of work, I enjoy swimming, running, writing, and reading.
+            Outside of work, I enjoy open-water swimming, birdwatching, distance running, and reading. My Goodreads will tell you all you need to know.
           </p>
         </section>
 
         <section class="section" aria-labelledby="skills-title">
           <h2 class="section-title" id="skills-title">SKILLS</h2>
           <div class="skills">
-            <span class="chip">End-to-End Product Design</span>
-            <span class="chip">UX Design</span>
-            <span class="chip">Responsive Layouts</span>
-            <span class="chip">Distance Swimming</span>
-            <span class="chip">UX Research</span>
-            <span class="chip">Prototyping</span>
-            <span class="chip">User Flows</span>
-            <span class="chip">Development Handoff</span>
-            <span class="chip">Component Design</span>
-            <span class="chip">Ice Fishing</span>
-            <span class="chip">Complex Datasets</span>
-            <span class="chip">UI Design</span>
-            <span class="chip">Figma</span>
-            <span class="chip">Agile Product</span>
-            <span class="chip">NYT Top 100 21st Century Novels</span>
-            <span class="chip">Product Development Lifecycles</span>
-            <span class="chip">Information Architecture</span>
-            <span class="chip">Agentic Workflow</span>
-            <span class="chip">JavaScript</span>
-            <span class="chip">Mentorship</span>
-            <span class="chip">Design Leadership</span>
-            <span class="chip">Stakeholder Management</span>
-            <span class="chip">Wireframing</span>
-            <span class="chip">Accessibility</span>
+            <div class="skills-row">
+              <div class="skills-track">
+                <div class="skills-set">
+                  <span class="chip">End-to-End Product Design</span>
+                  <span class="chip">UX Design</span>
+                  <span class="chip">Responsive Layouts</span>
+                  <span class="chip">Distance Swimming</span>
+                  <span class="chip">UX Research</span>
+                  <span class="chip">Prototyping</span>
+                  <span class="chip">User Flows</span>
+                  <span class="chip">Development Handoff</span>
+                </div>
+                <div class="skills-set" aria-hidden="true">
+                  <span class="chip">End-to-End Product Design</span>
+                  <span class="chip">UX Design</span>
+                  <span class="chip">Responsive Layouts</span>
+                  <span class="chip">Distance Swimming</span>
+                  <span class="chip">UX Research</span>
+                  <span class="chip">Prototyping</span>
+                  <span class="chip">User Flows</span>
+                  <span class="chip">Development Handoff</span>
+                </div>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-track">
+                <div class="skills-set">
+                  <span class="chip">Component Design</span>
+                  <span class="chip">Ice Fishing</span>
+                  <span class="chip">Complex Datasets</span>
+                  <span class="chip">UI Design</span>
+                  <span class="chip">Figma</span>
+                  <span class="chip">Agile Product</span>
+                  <span class="chip">NYT Top 100 21st Century Novels</span>
+                  <span class="chip">Product Development Lifecycles</span>
+                </div>
+                <div class="skills-set" aria-hidden="true">
+                  <span class="chip">Component Design</span>
+                  <span class="chip">Ice Fishing</span>
+                  <span class="chip">Complex Datasets</span>
+                  <span class="chip">UI Design</span>
+                  <span class="chip">Figma</span>
+                  <span class="chip">Agile Product</span>
+                  <span class="chip">NYT Top 100 21st Century Novels</span>
+                  <span class="chip">Product Development Lifecycles</span>
+                </div>
+              </div>
+            </div>
+            <div class="skills-row">
+              <div class="skills-track">
+                <div class="skills-set">
+                  <span class="chip">Information Architecture</span>
+                  <span class="chip">Agentic Workflow</span>
+                  <span class="chip">JavaScript</span>
+                  <span class="chip">Mentorship</span>
+                  <span class="chip">Design Leadership</span>
+                  <span class="chip">Stakeholder Management</span>
+                  <span class="chip">Wireframing</span>
+                  <span class="chip">Accessibility</span>
+                </div>
+                <div class="skills-set" aria-hidden="true">
+                  <span class="chip">Information Architecture</span>
+                  <span class="chip">Agentic Workflow</span>
+                  <span class="chip">JavaScript</span>
+                  <span class="chip">Mentorship</span>
+                  <span class="chip">Design Leadership</span>
+                  <span class="chip">Stakeholder Management</span>
+                  <span class="chip">Wireframing</span>
+                  <span class="chip">Accessibility</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
