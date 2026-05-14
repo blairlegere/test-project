@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Work | Blair Legere</title>
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #2d2f33;
+        --quiet: #5c6166;
+        --line: #d9dde0;
+        --brand: #8abfb0;
+        --paper: #ffffff;
+        font-family: "Roboto", system-ui, -apple-system, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 32px;
+        flex-wrap: wrap;
+      }
+
+      .brand-logo {
+        display: block;
+        height: 28px;
+        width: auto;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: flex-end;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        position: relative;
+        color: #8bbaab;
+        text-decoration: none;
+        padding-bottom: 4px;
+        font-size: 14px;
+      }
+
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.28s ease;
+      }
+
+      .nav a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .nav a[aria-current="page"]::after {
+        transform: scaleX(1);
+      }
+
+      .nav a:active {
+        color: #6e9e91;
+      }
+
+      .work-main {
+        flex: 1;
+        padding: 0 32px 48px;
+      }
+
+      .work-inner {
+        max-width: 1040px;
+        margin: 0 auto;
+      }
+
+      .work-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 72px;
+      }
+
+      .project {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+        gap: 40px 48px;
+        align-items: center;
+      }
+
+      .project-thumb {
+        border-radius: 14px;
+        min-height: 220px;
+        aspect-ratio: 4 / 3;
+        background-color: #e8ece9;
+        background-image:
+          radial-gradient(circle at 18% 28%, rgba(255, 255, 255, 0.35) 0%, transparent 42%),
+          radial-gradient(circle at 78% 72%, rgba(0, 0, 0, 0.06) 0%, transparent 45%),
+          repeating-linear-gradient(
+            -12deg,
+            transparent,
+            transparent 3px,
+            rgba(255, 255, 255, 0.08) 3px,
+            rgba(255, 255, 255, 0.08) 6px
+          );
+      }
+
+      .project-thumb--b {
+        background-color: #dfe8e4;
+        background-image:
+          linear-gradient(145deg, rgba(232, 160, 180, 0.55) 0%, transparent 55%),
+          linear-gradient(315deg, rgba(139, 186, 171, 0.45) 0%, transparent 50%),
+          radial-gradient(ellipse 80% 60% at 50% 100%, rgba(120, 130, 140, 0.25), transparent);
+      }
+
+      .project-copy h2 {
+        margin: 0 0 12px;
+        font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+      }
+
+      .project-copy p {
+        margin: 0 0 22px;
+        color: var(--quiet);
+        font-size: 14px;
+        line-height: 1.55;
+        max-width: 38em;
+      }
+
+      .btn-case {
+        display: inline-block;
+        background: #111;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        padding: 11px 22px 12px;
+        border-radius: 999px;
+        transition: background 0.2s ease, transform 0.15s ease;
+      }
+
+      .btn-case:hover {
+        background: #000;
+      }
+
+      .btn-case:active {
+        transform: scale(0.98);
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--line);
+        margin-top: auto;
+      }
+
+      .site-footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 32px;
+        flex-wrap: wrap;
+      }
+
+      .footer-socials {
+        display: flex;
+        gap: 16px;
+      }
+
+      .icon-link {
+        width: 24px;
+        height: 24px;
+        display: inline-grid;
+        place-items: center;
+        color: #8bbaab;
+        transition: color 0.2s ease;
+      }
+
+      .icon-link:hover {
+        color: #6e9e91;
+      }
+
+      .icon-link:active {
+        color: #4d7c6e;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nav a::after {
+          transition: none;
+        }
+
+        .btn-case {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .project {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .project-thumb {
+          aspect-ratio: 16 / 10;
+          min-height: 180px;
+        }
+
+        .work-list {
+          gap: 56px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Blair Legere home">
+        <img
+          class="brand-logo"
+          src="logo.png"
+          width="225"
+          height="132"
+          alt="Blair Legere logo"
+          decoding="async"
+        >
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#about">About</a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="blair-legere-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="work-main" id="main">
+      <div class="work-inner">
+        <ul class="work-list">
+          <li class="project">
+            <div class="project-thumb project-thumb--a" role="img" aria-hidden="true"></div>
+            <div class="project-copy">
+              <h2>Unified Search, Rewritten for Human Networks</h2>
+              <p>Transforming enterprise search from entity lookup into relationship-driven discovery.</p>
+              <a class="btn-case" href="#">View Case Study</a>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project-thumb project-thumb--b" role="img" aria-hidden="true"></div>
+            <div class="project-copy">
+              <h2>bx-ui: Blackstone's Enterprise Design System</h2>
+              <p>The creation, development, and evolution of bx-ui.</p>
+              <a class="btn-case" href="#">View Case Study</a>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project-thumb project-thumb--a" role="img" aria-hidden="true"></div>
+            <div class="project-copy">
+              <h2>Creating User Delight With Data</h2>
+              <p>The rumors are true—wrapped data can spark user intrigue anywhere.</p>
+              <a class="btn-case" href="#">View Case Study</a>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project-thumb project-thumb--b" role="img" aria-hidden="true"></div>
+            <div class="project-copy">
+              <h2>From Fragmented Data to Confident Portfolio Decisions</h2>
+              <p>Enabling faster, data-driven investment decisions at scale.</p>
+              <a class="btn-case" href="#">View Case Study</a>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project-thumb project-thumb--a" role="img" aria-hidden="true"></div>
+            <div class="project-copy">
+              <h2>Crafting a Product Design Lifecycle for the Modern Age</h2>
+              <p>A seemingly impossible task with important takeaways.</p>
+              <a class="btn-case" href="#">View Case Study</a>
+            </div>
+          </li>
+          <li class="project">
+            <div class="project-thumb project-thumb--b" role="img" aria-hidden="true"></div>
+            <div class="project-copy">
+              <h2>The Alta Logo</h2>
+              <p>Redesigning a legacy application's first impression, 12 years later.</p>
+              <a class="btn-case" href="#">View Case Study</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <a href="index.html" aria-label="Blair Legere home">
+          <img
+            class="brand-logo"
+            src="logo.png"
+            width="225"
+            height="132"
+            alt=""
+            decoding="async"
+          >
+        </a>
+        <div class="footer-socials" aria-label="Contact links">
+          <a class="icon-link" href="mailto:hello@blairlegere.com" aria-label="Email Blair">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 6.5h16v11H4z"/>
+              <path fill="none" stroke="currentColor" stroke-width="1.8" d="m4.8 7.2 7.2 5.5 7.2-5.5"/>
+            </svg>
+          </a>
+          <a class="icon-link" href="https://www.linkedin.com" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path fill="currentColor" d="M6.8 8.9h3.1V19H6.8zM8.4 4.3a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM11.8 8.9h3v1.4h.1c.4-.8 1.5-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.9V19h-3.1v-4.9c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6v5h-3.1z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

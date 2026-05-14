@@ -17,6 +17,7 @@ const mimeByExt = {
   ".ico": "image/x-icon",
   ".ttf": "font/ttf",
   ".txt": "text/plain; charset=utf-8",
+  ".pdf": "application/pdf",
   ".webp": "image/webp",
 };
 
