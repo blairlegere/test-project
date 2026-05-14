@@ -18,9 +18,13 @@
         --line: #d9dde0;
         --brand: #8abfb0;
         --paper: #ffffff;
+        --surface: rgba(255, 255, 255, 0.72);
         font-family: "Roboto", system-ui, -apple-system, sans-serif;
-        background: var(--paper);
         color: var(--ink);
+      }
+
+      html {
+        background-color: #dfece7;
       }
 
       * {
@@ -34,6 +38,157 @@
         flex-direction: column;
         font-size: 14px;
         line-height: 1.5;
+        position: relative;
+      }
+
+      .ambient {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+        background: linear-gradient(118deg, #d8ebe4 0%, #fafdfc 32%, #c5dfd4 58%, #f2faf7 100%);
+        background-size: 320% 320%;
+        animation: ambientShift 26s ease-in-out infinite;
+      }
+
+      @keyframes ambientShift {
+        0% {
+          background-position: 8% 20%;
+        }
+
+        50% {
+          background-position: 92% 78%;
+        }
+
+        100% {
+          background-position: 8% 20%;
+        }
+      }
+
+      .ambient__orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(48px);
+        opacity: 0.52;
+        width: clamp(300px, 62vw, 620px);
+        height: clamp(300px, 62vw, 620px);
+        will-change: transform;
+      }
+
+      .ambient__orb--a {
+        top: -16%;
+        left: -12%;
+        background: radial-gradient(
+          circle at 38% 36%,
+          rgba(139, 186, 171, 0.95) 0%,
+          rgba(139, 186, 171, 0.42) 46%,
+          transparent 72%
+        );
+        animation: orbA 22s ease-in-out infinite;
+      }
+
+      .ambient__orb--b {
+        bottom: -22%;
+        right: -16%;
+        opacity: 0.48;
+        background: radial-gradient(
+          circle at 42% 44%,
+          rgba(90, 145, 128, 0.65) 0%,
+          rgba(138, 191, 176, 0.38) 50%,
+          transparent 74%
+        );
+        animation: orbB 28s ease-in-out infinite;
+      }
+
+      .ambient__orb--c {
+        top: 32%;
+        left: 38%;
+        width: clamp(220px, 44vw, 440px);
+        height: clamp(220px, 44vw, 440px);
+        opacity: 0.36;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(139, 186, 171, 0.45) 0%,
+          rgba(200, 218, 210, 0.35) 48%,
+          transparent 70%
+        );
+        animation: orbC 34s ease-in-out infinite;
+      }
+
+      .ambient__orb--d {
+        bottom: -18%;
+        left: -14%;
+        opacity: 0.44;
+        width: clamp(260px, 55vw, 520px);
+        height: clamp(260px, 55vw, 520px);
+        background: radial-gradient(
+          circle at 55% 35%,
+          rgba(168, 209, 200, 0.55) 0%,
+          rgba(139, 186, 171, 0.28) 52%,
+          transparent 72%
+        );
+        animation: orbD 30s ease-in-out infinite;
+      }
+
+      @keyframes orbA {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        40% {
+          transform: translate(10vw, 8vh) scale(1.12);
+        }
+
+        70% {
+          transform: translate(-8vw, 12vh) scale(0.94);
+        }
+      }
+
+      @keyframes orbB {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        45% {
+          transform: translate(-12vw, -10vh) scale(1.1);
+        }
+
+        75% {
+          transform: translate(10vw, -4vh) scale(0.96);
+        }
+      }
+
+      @keyframes orbC {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+
+        42% {
+          transform: translate(-12vw, 14vh);
+        }
+
+        68% {
+          transform: translate(14vw, -10vh);
+        }
+      }
+
+      @keyframes orbD {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate(14vw, -8vh) scale(1.08);
+        }
+
+        80% {
+          transform: translate(-6vw, 6vh) scale(0.95);
+        }
       }
 
       a {
@@ -48,6 +203,11 @@
         gap: 24px;
         padding: 32px;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+        background: var(--surface);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+        backdrop-filter: blur(22px) saturate(160%);
       }
 
       .brand-logo {
@@ -99,6 +259,11 @@
       .work-main {
         flex: 1;
         padding: 0 32px 48px;
+        position: relative;
+        z-index: 1;
+        background: var(--surface);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+        backdrop-filter: blur(22px) saturate(160%);
       }
 
       .work-inner {
@@ -186,6 +351,11 @@
       .site-footer {
         border-top: 1px solid var(--line);
         margin-top: auto;
+        position: relative;
+        z-index: 1;
+        background: var(--surface);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+        backdrop-filter: blur(22px) saturate(160%);
       }
 
       .site-footer-inner {
@@ -227,6 +397,20 @@
         .btn-case {
           transition: none;
         }
+
+        .ambient__orb {
+          animation: none;
+        }
+
+        .ambient {
+          animation: none;
+        }
+      }
+
+      @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+        :root {
+          --surface: rgba(255, 255, 255, 0.88);
+        }
       }
 
       @media (max-width: 720px) {
@@ -247,6 +431,12 @@
     </style>
   </head>
   <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient__orb ambient__orb--a"></span>
+      <span class="ambient__orb ambient__orb--b"></span>
+      <span class="ambient__orb ambient__orb--c"></span>
+      <span class="ambient__orb ambient__orb--d"></span>
+    </div>
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Blair Legere home">
         <img
