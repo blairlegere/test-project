@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unified Search, Rewritten for Human Networks | Blair Legere</title>
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient__orb ambient__orb--a"></span>
+      <span class="ambient__orb ambient__orb--b"></span>
+      <span class="ambient__orb ambient__orb--c"></span>
+      <span class="ambient__orb ambient__orb--d"></span>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Blair Legere home">
+        <img
+          class="brand-logo"
+          src="logo.png"
+          width="225"
+          height="132"
+          alt="Blair Legere logo"
+          decoding="async"
+        >
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#about">About</a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="blair-legere-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="case-main" id="main">
+      <article class="case-inner">
+        <a class="case-back" href="work.html">← Back to Work</a>
+
+        <h1 class="case-title">Unified Search, Rewritten for Human Networks</h1>
+
+        <dl class="case-meta">
+          <div class="case-meta-item">
+            <dt>Overview</dt>
+            <dd>
+              A unified relationship intelligence interface, designed to provide a seamless experience when searching Blackstone’s firm-wide network.
+            </dd>
+          </div>
+          <div class="case-meta-item">
+            <dt>Role</dt>
+            <dd>Design Lead</dd>
+          </div>
+          <div class="case-meta-item">
+            <dt>Date Range</dt>
+            <dd>September 2024 - December 2024</dd>
+          </div>
+        </dl>
+
+        <figure class="case-hero case-hero--placeholder" aria-label="Case study hero image">
+          <!-- Replace placeholder with: <img src="your-hero.jpg" alt="Unified Search product screens" width="1600" height="900"> -->
+        </figure>
+
+        <p class="case-lead">
+          As data environments grow in complexity, how do you design an entry point that enables reliable discovery?
+        </p>
+
+        <section class="case-section" aria-labelledby="challenge-heading">
+          <h2 id="challenge-heading">The Challenge</h2>
+          <p>Across an investment firm, deal teams regularly ask questions like:</p>
+          <ul>
+            <li>Who can make a warm introduction to the CEO of Microsoft?</li>
+            <li>When was the last time we spoke with Rover?</li>
+            <li>Who has the longest-running relationship with Jersey Mike’s?</li>
+          </ul>
+          <p>
+            Answering these questions, however, required manual effort across fragmented systems which differed across teams.
+          </p>
+          <p>
+            Enter Rolodex: Blackstone’s relationship‑intelligence platform surfacing people, companies, and their internal employee connections.
+          </p>
+          <p>
+            Over time, multiple data sources were centralized to build richer, more holistic profiles and search capabilities. As the dataset matured, so did the need for a smarter search interface.
+          </p>
+        </section>
+
+        <section class="case-section" aria-labelledby="role-heading">
+          <h2 id="role-heading">Role</h2>
+          <p>I led the end‑to‑end redesign of Rolodex Search, from research through implementation.</p>
+          <p>My work included:</p>
+          <ul>
+            <li>User research across business units</li>
+            <li>UI/UX design spanning Low and high-fidelity prototyping</li>
+            <li>Project managing front‑end development</li>
+            <li>Design QA testing and engineering collaboration</li>
+          </ul>
+        </section>
+
+        <section class="case-section" aria-labelledby="problem-heading">
+          <h2 id="problem-heading">The Problem</h2>
+          <p>Rolodex’s search interface was its primary entry point—and its primary point of failure. Teams needed a fast, reliable way to:</p>
+          <ul>
+            <li>Find people or companies</li>
+            <li>Understand mutual connections</li>
+            <li>Disambiguate entities with shared or overlapping names</li>
+          </ul>
+          <p>
+            The existing interface required users to decide whether they were searching for a Person or Company before typing—a decision they often couldn’t make.
+          </p>
+          <p>
+            A query like “Morgan” exposed the flaw immediately. Was the user looking for a first or last name? A company? Something else entirely?
+          </p>
+          <figure class="case-figure">
+            <div class="case-figure__media" role="img" aria-label="Image placeholder"></div>
+            <figcaption>Original Rolodex home page (ca. 2020)</figcaption>
+          </figure>
+          <p>
+            Moreover, incomplete profiles, inconsistent naming, and a constrained search model made it difficult to confidently surface the “correct” result.
+          </p>
+          <figure class="case-figure">
+            <div class="case-figure__media" role="img" aria-label="Image placeholder"></div>
+            <figcaption>Original Rolodex search results (ca. 2020)</figcaption>
+          </figure>
+        </section>
+
+        <p class="case-lead case-lead--mid">
+          How do you return the most useful answer when intent is ambiguous and relationships—not only keywords—define relevance?
+        </p>
+
+        <section class="case-section" aria-labelledby="research-heading">
+          <h2 id="research-heading">User Research</h2>
+          <p>
+            In order to determine the requirements for optimal search, I conducted research across teams, business units, and seniority levels to afford a holistic approach.
+          </p>
+          <ul>
+            <li>Designed a testing plan for user profiles spanning cross-firm initiatives: deal sourcing, human capital management, and corporate finance.</li>
+            <li>Moderated testing sessions gathering qualitative user experience and pain points.</li>
+            <li>Iterated low and high fidelity prototypes based on user feedback.</li>
+          </ul>
+          <p>A high-level overview of themes and insights from these sessions can be found below:</p>
+          <figure class="case-figure">
+            <div class="case-figure__media" role="img" aria-label="Image placeholder"></div>
+          </figure>
+          <p>
+            Using user frustration metrics, I determined how these themes were distributed across the user population. As suspected, initial search remained the most common point of user failure.
+          </p>
+          <figure class="case-figure">
+            <div class="case-figure__media" role="img" aria-label="Image placeholder"></div>
+          </figure>
+          <p>From these findings, I created wireframes for an optimized search layout:</p>
+          <figure class="case-figure">
+            <div class="case-figure__media" role="img" aria-label="Image placeholder"></div>
+          </figure>
+        </section>
+
+        <section class="case-section" aria-labelledby="insight-heading">
+          <h2 id="insight-heading">Insight</h2>
+          <p>
+            The autocomplete dropdown became the first opportunity to orient users with the dataset. Surfacing potential matches across categories and pairing them with strong, identifiable visual cues—logos, URLs, locations—reduced cognitive load before users ever committed to a result.
+          </p>
+          <p>
+            Search results needed to be previewable. Through research, we identified a small set of signals that helped users quickly assess relevance: total connections, notable employees, geography, and associated industries.
+          </p>
+          <p>
+            During testing, users were frequently entering queries like “real estate” or “database engineering.” They weren’t searching for a company or a person—they were searching for experience.
+          </p>
+          <p>
+            Rather than correct this behavior, we embraced it by integrating Expert Search into the search results page.
+          </p>
+        </section>
+
+        <section class="case-section" aria-labelledby="solution-heading">
+          <h2 id="solution-heading">Solution</h2>
+          <h3>Unified Search</h3>
+          <p>
+            We removed the People/Company toggle and introduced a single, unified search that interprets intent after the query, not before it. Results span people, companies, and expertise within one cohesive experience.
+          </p>
+          <h3>Relevance‑Driven Ranking</h3>
+          <p>Based on search history analysis and behavioral research, results were prioritized using the following signals:</p>
+          <ul>
+            <li>Spelling and character closeness</li>
+            <li>Internal employee status</li>
+            <li>Number of Blackstone connections</li>
+            <li>Profile completeness</li>
+          </ul>
+          <p>This balanced precision with practicality in a noisy, real‑world dataset.</p>
+          <h3>Scannable Results</h3>
+          <p>
+            We designed a dynamic autocomplete dropdown to support fast disambiguation, paired with a unified results page that clearly surfaced connection context and provided direct access to Expert AI.
+          </p>
+          <h3>Expertise Search</h3>
+          <p>
+            Integrating this separate Rolodex tool into the search results enabled users to identify internal experts based on the depth and volume of their external correspondences within a given industry, turning relationship data into a proxy for real‑world experience.
+          </p>
+        </section>
+
+        <section class="case-section" aria-labelledby="gallery-heading">
+          <h2 id="gallery-heading">Gallery</h2>
+          <div class="case-gallery" aria-label="Image carousel placeholder">Image carousel goes here</div>
+        </section>
+
+        <section class="case-section" aria-labelledby="impact-heading">
+          <h2 id="impact-heading">Impact</h2>
+          <ul>
+            <li>Enabled AI‑powered expertise discovery across all business units</li>
+            <li>Reduced time spent navigating disconnected systems by 800+ hours</li>
+            <li>Nominated for the 2025 American Financial Technology Awards</li>
+          </ul>
+          <figure class="case-figure">
+            <div class="case-figure__media" role="img" aria-label="Image placeholder"></div>
+          </figure>
+        </section>
+
+        <nav class="case-nav-next" aria-label="Next case study">
+          <a class="case-next-btn" href="bx-ui.html">Next: bx-ui: Blackstone's Enterprise Design System</a>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <a href="index.html" aria-label="Blair Legere home">
+          <img
+            class="brand-logo"
+            src="logo.png"
+            width="225"
+            height="132"
+            alt=""
+            decoding="async"
+          >
+        </a>
+        <div class="footer-socials" aria-label="Contact links">
+          <a class="icon-link" href="mailto:hello@blairlegere.com" aria-label="Email Blair">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 6.5h16v11H4z"/>
+              <path fill="none" stroke="currentColor" stroke-width="1.8" d="m4.8 7.2 7.2 5.5 7.2-5.5"/>
+            </svg>
+          </a>
+          <a class="icon-link" href="https://www.linkedin.com" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <path fill="currentColor" d="M6.8 8.9h3.1V19H6.8zM8.4 4.3a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM11.8 8.9h3v1.4h.1c.4-.8 1.5-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.9V19h-3.1v-4.9c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6v5h-3.1z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
